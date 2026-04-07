@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "author": "Seismograf IoT ESP32",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-v1", "id": "esp", "top": 102.88, "left": 4.8, "attrs": {} },
+    { "type": "wokwi-mpu6050", "id": "mpu", "top": 23.02, "left": -170.48, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd", "top": -60, "left": 120, "attrs": { "pins": "i2c" } },
+    { "type": "wokwi-led", "id": "led_g", "top": 100, "left": 310, "attrs": { "color": "green" } },
+    { "type": "wokwi-led", "id": "led_y", "top": 150, "left": 310, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-led", "id": "led_r", "top": 200, "left": 310, "attrs": { "color": "red" } },
+    { "type": "wokwi-resistor", "id": "rg", "top": 104, "left": 240, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "ry", "top": 154, "left": 240, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "rr", "top": 204, "left": 240, "attrs": { "value": "220" } },
+    { "type": "wokwi-buzzer", "id": "bz", "top": 357.6, "left": -123, "attrs": { "volume": "0.5" } },
+    { "type": "wokwi-iot-gateway", "id": "gw", "top": 300, "left": -300, "attrs": {} }
+  ],
+  "connections": [
+    [ "mpu:VCC", "esp:3V3", "red", [] ],
+    [ "mpu:GND", "esp:GND.1", "black", [] ],
+    [ "mpu:SDA", "esp:D21", "blue", [] ],
+    [ "mpu:SCL", "esp:D22", "yellow", [] ],
+    [ "lcd:VCC", "esp:3V3", "red", [] ],
+    [ "lcd:GND", "esp:GND.1", "black", [] ],
+    [ "lcd:SDA", "esp:D21", "blue", [] ],
+    [ "lcd:SCL", "esp:D22", "yellow", [] ],
+    [ "esp:D25", "rg:1", "green", [] ],
+    [ "rg:2", "led_g:A", "green", [] ],
+    [ "led_g:K", "esp:GND.2", "black", [] ],
+    [ "esp:D26", "ry:1", "yellow", [] ],
+    [ "ry:2", "led_y:A", "yellow", [] ],
+    [ "led_y:K", "esp:GND.2", "black", [] ],
+    [ "esp:D27", "rr:1", "red", [] ],
+    [ "rr:2", "led_r:A", "red", [] ],
+    [ "led_r:K", "esp:GND.2", "black", [] ],
+    [ "esp:D13", "bz:1", "purple", [] ],
+    [ "esp:GND.2", "bz:2", "black", [] ],
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ]
+  ],
+  "serialMonitor": { "display": "terminal", "newline": "lf" },
+  "dependencies": {}
+}

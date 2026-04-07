@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = '.pio\build\esp32doit-devkit-v1\firmware.bin'
+elf = 'C:\Users\ACER\Documents\PlatformIO\Projects\Earthquake Detection with MPU6050\.pio\build\esp32doit-devkit-v1\firmware.elf'
